@@ -1,0 +1,31 @@
+{
+  "one": 
+  {
+  	"Name":"EnemyHandle_S_A",
+  	"ATK":10,
+  	"HP":70,
+  	"MaxHP":70
+  },
+   "two": 
+  {
+  	"Name":"EnemyHandle_S_A",
+  	"ATK":10,
+  	"HP":70,
+  	"MaxHP":70
+  },
+   "three": 
+  {
+  	"Name":"EnemyHandle_S_A",
+  	"ATK":10,
+  	"HP":70,
+  	"MaxHP":70
+  },
+   "four": 
+  {
+  	"Name":"EnemyHandle_S_A",
+  	"ATK":10,
+  	"HP":70,
+  	"MaxHP":70
+  }
+  
+}

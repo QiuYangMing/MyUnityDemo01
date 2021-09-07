@@ -1,0 +1,98 @@
+{
+  "one": {
+    "Name": "EnemyHandle_S_A",
+    "ATK": 10,
+    "HP": 80,
+    "MaxHP": 80
+  },
+  "tow": {
+    "Name": "EnemyHandle_S_A",
+    "ATK": 10,
+    "HP": 80,
+    "MaxHP": 80
+  },
+  "three": {
+    "Name": "EnemyHandle_Archer_A",
+    "ATK": 20,
+    "HP": 50,
+    "MaxHP": 50
+  },
+  "four": {
+    "Name": "EnemyHandle_Archer_A",
+    "ATK": 20,
+    "HP": 50,
+    "MaxHP": 50
+  },
+  "five": {
+    "Name": "EnemyHandle_S_A",
+    "ATK": 10,
+    "HP": 80,
+    "MaxHP": 80
+  },
+  "six": {
+    "Name": "EnemyHandle_Archer_A",
+    "ATK": 20,
+    "HP": 50,
+    "MaxHP": 50
+  },
+  "seven": {
+    "Name": "EnemyHandle_S_A",
+    "ATK": 10,
+    "HP": 80,
+    "MaxHP": 80
+  },
+  "eight": {
+    "Name": "EnemyHandle_S_A",
+    "ATK": 10,
+    "HP": 80,
+    "MaxHP": 80
+  },
+  "nine": {
+    "Name": "EnemyHandle_S_A",
+    "ATK": 10,
+    "HP": 80,
+    "MaxHP": 80
+  },
+  "ten": {
+    "Name": "EnemyHandle_S_A",
+    "ATK": 10,
+    "HP": 80,
+    "MaxHP": 80
+  },
+  "eleven": {
+    "Name": "EnemyHandle_S_A",
+    "ATK": 10,
+    "HP": 80,
+    "MaxHP": 80
+  },
+  "twelve": {
+    "Name": "EnemyHandle_Archer_A",
+    "ATK": 20,
+    "HP": 50,
+    "MaxHP": 50
+  },
+  "thirteen": {
+    "Name": "EnemyHandle_S_A",
+    "ATK": 10,
+    "HP": 80,
+    "MaxHP": 80
+  },
+  "fourteen": {
+    "Name": "EnemyHandle_Archer_A",
+    "ATK": 20,
+    "HP": 50,
+    "MaxHP": 50
+  },
+  "fifteen": {
+    "Name": "EnemyHandle_S_A",
+    "ATK": 10,
+    "HP": 80,
+    "MaxHP": 80
+  },
+  "sixteen": {
+    "Name": "EnemyHandle",
+    "ATK": 40,
+    "HP": 200,
+    "MaxHP": 200
+  }
+}

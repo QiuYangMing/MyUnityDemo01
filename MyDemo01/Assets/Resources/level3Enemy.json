@@ -1,0 +1,10 @@
+{
+  "one": 
+  {
+  	"Name":"EnemyHandle",
+  	"ATK":40,
+  	"HP":200,
+  	"MaxHP":200
+  }
+  
+}
