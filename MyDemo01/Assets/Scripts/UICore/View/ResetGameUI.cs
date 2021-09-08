@@ -50,11 +50,14 @@ public class ResetGameUI : View
             Img_Win.enabled = false;
         }
         audioM.PlayMusic(1);
+        GameData.canLoopMusic = false;
         Cursor.visible = true;
     }
     protected override void OnDisable()
     {
         Cursor.visible = false;
+        GameData.canLoopMusic = true;
+
     }
     public override void HandEvent(string eventName, object data)
     {

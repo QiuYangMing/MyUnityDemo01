@@ -26,6 +26,15 @@ public class EnemyManager : MonoBehaviour {
     private int heavyPause = 12;
     private float heavyStrength = 0.065f;
 
+    public float GetShakeTime()
+    {
+        return shakeTime;
+    }
+    public float GetLightStrength()
+    {
+        return lightStrength;
+    }
+
     void Start () {
         bc = GetComponent<BlackKnightController>();
         sensor = transform.Find("sensor").gameObject;

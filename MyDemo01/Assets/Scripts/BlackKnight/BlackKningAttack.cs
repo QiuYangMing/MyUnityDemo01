@@ -80,7 +80,7 @@ public class BlackKningAttack : MonoBehaviour
             candge++;
 
         }
-        else if (dist > 2.0f && dist <= 3.0f)
+        else if (dist > 2.0f )
         {
             bc.transform.LookAt(bi.Player.transform);
             bc.IssueTrigger("Attack3");

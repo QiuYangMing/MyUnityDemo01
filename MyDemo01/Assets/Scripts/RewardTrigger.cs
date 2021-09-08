@@ -34,7 +34,7 @@ public class RewardTrigger : MonoBehaviour
 
     IEnumerator EnableAirWall()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         gameObject.GetComponent<BoxCollider>().isTrigger = false;
     }
 }

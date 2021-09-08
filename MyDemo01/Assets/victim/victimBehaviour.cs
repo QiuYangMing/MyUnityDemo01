@@ -40,6 +40,7 @@ public class victimBehaviour : PlayableBehaviour
     IEnumerator Damege()
     {
         yield return new WaitForSeconds(3.5f);
+        AttackScene.Instance.CameraShake(em.GetShakeTime(), em.GetLightStrength());
         em.AsssionDamege(-60f);
         if (em.esm.HP <= 0)
         {

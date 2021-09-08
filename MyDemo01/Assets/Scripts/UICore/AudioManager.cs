@@ -44,7 +44,7 @@ public class AudioManager : UnitySingleton<AudioManager>
 
     private void Update()
     {
-        if (!audioSource_Music.isPlaying)
+        if (!audioSource_Music.isPlaying && GameData.canLoopMusic)
         {
             audioSource_Music.Play();
         }

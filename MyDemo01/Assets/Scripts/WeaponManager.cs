@@ -93,10 +93,19 @@ public class WeaponManager : IActorMnagerInterface
         GameObject fireWeaponObj = Instantiate(fireWeapon, whR.transform.position, weaponR.transform.rotation);
         weaponR.SetActive(false);
         fireWeaponObj.GetComponent<FireWeapon>().wc = whR;
-        Vector3 position = am.ac.cancom.lockTarget.obj.transform.position;
-        fireWeaponObj.transform.DOMove(position + new Vector3(0, 0.2f, 0), 0);
-        Destroy(fireWeaponObj, 0.1f);
-        StartCoroutine(MoveToFireWeapon(position));
+        try
+        {
+            Vector3 position = am.ac.cancom.lockTarget.obj.transform.position;
+            fireWeaponObj.transform.DOMove(position + new Vector3(0, 0.2f, 0), 0);
+            Destroy(fireWeaponObj, 0.1f);
+            StartCoroutine(MoveToFireWeapon(position));
+        }
+        catch (System.Exception)
+        {
+
+            Destroy(fireWeaponObj, 0.1f);
+        }
+        
 
 
         //am.ac.transform.position = am.ac.cancom.lockTarget.obj.transform.position - am.ac.cancom.lockTarget.obj.transform.forward*0.5f;

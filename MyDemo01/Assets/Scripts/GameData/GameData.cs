@@ -24,5 +24,6 @@ public class GameData
     public static bool towTirrgger = false;
     public static bool Win = false;
     public static bool restPlayer = false;
+    public static bool canLoopMusic = true;
 
 }
