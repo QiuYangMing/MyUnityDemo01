@@ -22,7 +22,7 @@ public class BlackKnightInput : EnInput {
         base.Awake();
         bc = GetComponent<BlackKnightController>();
         EnName = "BlackKnight";
-        attackRange = 8f;
+        attackRange = 12f;
         battleRange = 30f;
 
     }

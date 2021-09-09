@@ -17,7 +17,7 @@ public class EnemyManager : MonoBehaviour {
     public ParticleSystem eparticle;
     private int hitNum;
     public AudioSource audioS;
-    private AudioClip[] audioClip;
+    public AudioClip[] audioClip;
 
     [Header("打击感参数")]
     private float shakeTime = 0.1f;

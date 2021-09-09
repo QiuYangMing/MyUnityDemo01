@@ -39,8 +39,17 @@ public class victimBehaviour : PlayableBehaviour
 
     IEnumerator Damege()
     {
-        yield return new WaitForSeconds(3.5f);
-        AttackScene.Instance.CameraShake(em.GetShakeTime(), em.GetLightStrength());
+        yield return new WaitForSeconds(1f);
+        if (GameTool.HasKey("isCloseAudio"))
+        {
+            if (!bool.Parse(GameTool.GetString("isCloseAudio")))
+            {
+                em.audioS.clip = em.audioClip[UnityEngine.Random.Range(4, 8)];
+                em.audioS.Play();
+            }
+        }
+        AttackScene.Instance.CameraShake(0.3f, 0.05f);
+        yield return new WaitForSeconds(2.5f);
         em.AsssionDamege(-60f);
         if (em.esm.HP <= 0)
         {

@@ -92,7 +92,7 @@ public abstract class EnInput : MonoBehaviour {
     }
     public virtual void LockPlayer()
     {
-        if (Player != null && anim.GetBool("Grounded") && !esm.isAttack)
+        if (Player != null && anim.GetBool("Grounded") && !esm.isAttack && !esm.isBlocked)
         {
             playerPos = Player.transform.position;
             playerPos.y = gameObject.transform.position.y;

@@ -117,7 +117,11 @@ public class BlackKnightController : MonoBehaviour
     }
     private void OnUpdateRM(object _deltaPos)
     {
-        if (CheckStateTag("Attack") || CheckState("Shield2"))
+        if (CheckStateTag("Attack") )
+        {
+            deltaPos += (Vector3)_deltaPos;
+        }
+        if ( CheckStateTag("Shield") || CheckStateTag("Move"))
         {
             deltaPos += (Vector3)_deltaPos;
         }

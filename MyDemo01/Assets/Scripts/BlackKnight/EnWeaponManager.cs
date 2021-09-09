@@ -80,6 +80,10 @@ public class EnWeaponManager : IActorMnagerInterface {
         weaponBoxR.enabled = false;
         em.esm.isCanfly = false;
     }
+    private void OnLockTargetTrigger()
+    {
+        em.transform.LookAt(em.bc.ei.Player.transform) ;
+    }
     private void OnfireArrow()
     {
         GameObject arrow = Instantiate(ArrowObj, whR.transform.position, Quaternion.identity);
