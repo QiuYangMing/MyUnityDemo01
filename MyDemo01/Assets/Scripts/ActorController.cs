@@ -258,7 +258,7 @@ public class ActorController : MonoBehaviour
         //回血
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            MVC.SendEvent(GameDefine.command_AddHP, 20f);
+            MVC.SendEvent(GameDefine.command_AddHP, GameData.maxHp*0.2f);
         }
         //锁定功能
         cancom.LockUnlock();

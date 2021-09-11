@@ -23,7 +23,7 @@ public class BlackKnightInput : EnInput {
         bc = GetComponent<BlackKnightController>();
         EnName = "BlackKnight";
         attackRange = 12f;
-        battleRange = 30f;
+        battleRange = 24.6f;
 
     }
    
