@@ -17,6 +17,7 @@ public class StateManager : IActorMnagerInterface
     public bool isConterBackTrue;
     public bool isCanfly;
     public bool isAirAttack;
+    public bool isconterBack2;
     public float ATK = 10.0f;
 	void Start () {
 
@@ -40,9 +41,9 @@ public class StateManager : IActorMnagerInterface
 
         isHit = am.ac.CheckState("hit");
 
-        isAttack = am.ac.CheckStateTag("AttackL");
+        isAttack = am.ac.CheckStateTag("attack");
         isAirAttack = am.ac.CheckStateTag("AirAttack");
-
+        isconterBack2 = am.ac.CheckState("conterBack2");
 
 
 

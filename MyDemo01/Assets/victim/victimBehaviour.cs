@@ -53,7 +53,7 @@ public class victimBehaviour : PlayableBehaviour
         em.AsssionDamege(-60f);
         if (em.esm.HP <= 0)
         {
-            yield return new WaitForSeconds(0.9f);
+            yield return new WaitForSeconds(1.1f);
             pd.Stop();
         }
         

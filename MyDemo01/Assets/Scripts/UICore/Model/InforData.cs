@@ -91,12 +91,24 @@ public class InforData : Model
         GameTool.SetInt("RedORB", newRedORBCount);
         redORB = newRedORBCount;
         SendEvent(GameDefine.message_UpdateRedORB, redORB);
+        if (GameData.firstGetRedORB)
+        {
+            MVC.SendEvent(GameDefine.command_UpdateTips, "BO25");
+            GameTool.SetInt("firstGetRedORB", 0);
+            GameData.firstGetRedORB = false;
+        }
     }
     public void EditorGreenORB(int newGreenORBCount)
     {
         GameTool.SetInt("GreenORB", newGreenORBCount);
         greenORB = newGreenORBCount;
         SendEvent(GameDefine.message_UpdateGreenORB, greenORB);
+        if (GameData.firstGetGreenORB)
+        {
+            MVC.SendEvent(GameDefine.command_UpdateTips, "BO22");
+            GameTool.SetInt("firstGetGreenORB", 0);
+            GameData.firstGetGreenORB = false;
+        }
     }
     public void EditorBlueORB(int newBlueORBCount)
     {
@@ -104,5 +116,11 @@ public class InforData : Model
         blueORB = newBlueORBCount;
         SendEvent(GameDefine.message_UpdateBlueORB, blueORB);
         EditorMaxHp(GameTool.GetFloat("MaxHp") + GameTool.GetInt("BlueORB") * 20);
+        if (GameData.firstGetBlueORB)
+        {
+            MVC.SendEvent(GameDefine.command_UpdateTips, "BO19");
+            GameTool.SetInt("firstGetBlueORB", 0);
+            GameData.firstGetBlueORB = false;
+        }
     }
 }

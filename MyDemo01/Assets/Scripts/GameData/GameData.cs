@@ -25,5 +25,14 @@ public class GameData
     public static bool Win = false;
     public static bool restPlayer = false;
     public static bool canLoopMusic = true;
-
+    //第一次进入游戏(新手教程)
+    public static bool firstInBaseOperation = true;
+    public static bool firstInStopUIOperation = true;
+    public static bool firstInBattleOperation = true;
+    public static bool firstInMagicEnter = true;
+    public static bool firstBuyFireAttack = true;
+    public static bool firstBuyConterBack = true;
+    public static bool firstGetBlueORB = true;
+    public static bool firstGetGreenORB = true;
+    public static bool firstGetRedORB = true;
 }

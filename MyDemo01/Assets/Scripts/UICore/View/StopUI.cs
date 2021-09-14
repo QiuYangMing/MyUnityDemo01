@@ -129,7 +129,7 @@ public class StopUI : View
     private void OnReturnMain()
     {
         audioM.PlayMusic(0);
-            UIManager.Instance.HideSingleUI(E_UiId.StopUI);
+        UIManager.Instance.HideSingleUI(E_UiId.StopUI);
         GameSceneManager.Instance.LoadNextSceneAsyn("StartSence", delegate
         {
             UIManager.Instance.HideSingleUI(E_UiId.InforUI);

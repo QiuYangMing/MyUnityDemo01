@@ -20,6 +20,7 @@ public abstract class EnInput : MonoBehaviour {
     [Space]
     public GameObject Player;
     public NavMeshAgent navMeshAgent;
+    public StateManager sm;
     public string EnName;
     public Vector3 requiredPoint;
     protected Vector3 playerPos;
@@ -34,6 +35,7 @@ public abstract class EnInput : MonoBehaviour {
     protected virtual void Awake()
     {
         Player = GameObject.Find("PlayerHandle");
+        sm = Player.GetComponent<StateManager>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
         navMeshAgent.enabled = false;

@@ -7,17 +7,20 @@ public class CameraController : MonoBehaviour {
     public float horizontalSpeed;
     public float verticalSpeed;
     public bool lockState;
+    private float carmeraDampValue = 0.1f;
     private float tempEulerx;
     private PlayerInput pi;
     private GameObject playerHandle;
     private GameObject cameraHandle;
     private GameObject modle;
     private Vector3 tempModelEuler;
+    private Vector3 cameraDampVelocity;
     private Camera cameraMain;
     private Image lockDot;
     private GameObject slashEffects;
     private GameObject canves;
     private RectTransform locDotTrans;
+    private StateManager sm;
 
     /// <summary>
     /// 锁定的物体
@@ -27,6 +30,7 @@ public class CameraController : MonoBehaviour {
         cameraHandle = transform.parent.gameObject;
         playerHandle = cameraHandle.transform.parent.gameObject;
         pi = playerHandle.GetComponent<PlayerInput>();
+        sm = playerHandle.GetComponent<StateManager>();
         modle = playerHandle.transform.Find("unitychan").gameObject;
         slashEffects = playerHandle.transform.Find("SlashEffects").gameObject;
         tempEulerx = 20f;
@@ -50,29 +54,40 @@ public class CameraController : MonoBehaviour {
         {
         tempModelEuler  = modle.transform.eulerAngles;
         playerHandle.transform.Rotate(Vector3.up,pi.Jright * horizontalSpeed * Time.fixedDeltaTime);
-           
-
         tempEulerx -= pi.Jup * verticalSpeed * Time.fixedDeltaTime;
         tempEulerx = Mathf.Clamp(tempEulerx,-40,30);
         cameraHandle.transform.localEulerAngles = new Vector3(tempEulerx, 0, 0);
-
         modle.transform.eulerAngles = tempModelEuler;
         slashEffects.transform.eulerAngles = tempModelEuler;
         }
         else
         {
-            Vector3 tempForward = lockTarget.obj.transform.position - modle.transform.position;
-            tempForward.y = 0;
-            playerHandle.transform.forward = tempForward;
-            cameraHandle.transform.LookAt(lockTarget.obj.transform);
-            slashEffects.transform.LookAt(lockTarget.obj.transform);
-        }
+            try
+            {
+                Vector3 tempForward = lockTarget.obj.transform.position - modle.transform.position;
+                tempForward.y = 0;
+                playerHandle.transform.forward = tempForward;
+                //cameraHandle.transform.LookAt(lockTarget.obj.transform);
+                slashEffects.transform.LookAt(lockTarget.obj.transform);
+            }
+            catch (System.Exception)
+            {
 
-        cameraMain.transform.position = Vector3.Lerp(cameraMain.transform.position, transform.position,0.2f);
+                lockTarget = null;
+                lockDot.enabled = false;
+                lockState = false;
+            }
+          
+        }
+        //cameraMain.transform.position = Vector3.Lerp(cameraMain.transform.position, transform.position, 0.2f);
+        cameraMain.transform.position = Vector3.SmoothDamp(cameraMain.transform.position, transform.position, ref cameraDampVelocity, carmeraDampValue);
         //cameraMain.transform.eulerAngles = transform.eulerAngles;
+
         cameraMain.transform.LookAt(cameraHandle.transform.position);
 
+
     }
+    
     public void LockUnlock()
     {
         if (lockTarget ==null && pi.lockon)
@@ -121,24 +136,35 @@ public class CameraController : MonoBehaviour {
         {
            
             lockDot.rectTransform.position = Camera.main.WorldToScreenPoint(lockTarget.obj.transform.position + new Vector3(0,lockTarget.halfHeight,0));
-            if (lockTarget.em != null && lockTarget.em.esm.HP <= 0)
+            try
             {
+                if (lockTarget.em != null && lockTarget.em.esm.HP <= 0 || lockTarget.em.esm.isDie)
+                {
+                    lockTarget = null;
+                    lockDot.enabled = false;
+                    lockState = false;
+                }
+                else if (lockTarget.em == null)
+                {
+                    lockTarget = null;
+                    lockDot.enabled = false;
+                    lockState = false;
+                }
+                else if (Vector3.Distance(modle.transform.position, lockTarget.obj.transform.position) > 8.5f)
+                {
+                    lockTarget = null;
+                    lockDot.enabled = false;
+                    lockState = false;
+                }
+            }
+            catch (System.Exception)
+            {
+
                 lockTarget = null;
                 lockDot.enabled = false;
                 lockState = false;
             }
-            else if (lockTarget.em == null)
-            {
-                lockTarget = null;
-                lockDot.enabled = false;
-                lockState = false;
-            }
-            else if (Vector3.Distance(modle.transform.position,lockTarget.obj.transform.position)>8.5f)
-            {
-                lockTarget = null;
-                lockDot.enabled = false;
-                lockState = false;
-            }
+            
        
         }
     }

@@ -137,8 +137,8 @@ public class ActorController : MonoBehaviour
 
             if (!trackDirection)
             {
-
-                model.transform.forward = transform.forward;
+                Quaternion quaDir = Quaternion.LookRotation(transform.forward, Vector3.up);
+                model.transform.rotation = Quaternion.Lerp(model.transform.rotation,quaDir,Time.deltaTime*9f);
             }
             else
             {
@@ -285,18 +285,22 @@ public class ActorController : MonoBehaviour
     {
         if (m_Grounded)
         {
-        rigid.position += deltaPos;
-        //rigid.velocity = new Vector3(planarVec.x, rigid.velocity.y, planarVec.z) + thrustVec;
-        Vector3 targetPosition = rigid.position + planarVec* Time.fixedDeltaTime;
-        Vector3 targetVeloctiy = (targetPosition - transform.position) / Time.fixedDeltaTime;
-        targetVeloctiy.y = rigid.velocity.y;
-        rigid.velocity = targetVeloctiy;
-        //rigid.position += planarVec * Time.fixedDeltaTime + thrustVec;
-        thrustVec = Vector3.zero;
-        deltaPos = Vector3.zero;
+            rigid.position += deltaPos;
+            rigid.position += thrustVec;
+            //rigid.velocity = new Vector3(planarVec.x, rigid.velocity.y, planarVec.z) + thrustVec;
+
+            Vector3 targetPosition = rigid.position + planarVec * Time.fixedDeltaTime;
+            Vector3 targetVeloctiy = (targetPosition - transform.position) / Time.fixedDeltaTime;
+            targetVeloctiy.y = rigid.velocity.y;
+            rigid.velocity = targetVeloctiy;
+
+
+            //rigid.position += planarVec * Time.fixedDeltaTime + thrustVec;
+            thrustVec = Vector3.zero;
+            deltaPos = Vector3.zero;
 
         }
-       
+
 
         //*******以下是角色跟随滑块移动逻辑
         if (Move_CubeScript != null)
@@ -506,7 +510,11 @@ public class ActorController : MonoBehaviour
     }
     public void OnUpdateRM(object _deltaPos)
     {
-       
+        if (CheckStateTag("attack"))
+        {
+            deltaPos += (Vector3)_deltaPos;
+            deltaPos.y = 0;
+        }
     }
 
 

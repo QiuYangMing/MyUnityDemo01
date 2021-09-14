@@ -33,13 +33,16 @@ public class InitCtrl : Controller
         RegisterModel(new InforData());
         RegisterModel(new ShopData());
         RegisterModel(new EnInforData());
+        RegisterModel(new TipsMessageData());
     }
     //注册所有的控制器(其实就是命令与控制器进行绑定，如果没有绑定，那么控制器里面的Execute是不会被执行的)
     private void RegisterAllController()
     {
-       RegisterController(GameDefine.command_AddHP, typeof(Com_UpdateHP));
-       RegisterController(GameDefine.command_AddRedORB, typeof(Com_UpdateRedORB));
-       RegisterController(GameDefine.command_EnAddHP, typeof(Com_EnUpdataHp));
+        RegisterController(GameDefine.command_AddHP, typeof(Com_UpdateHP));
+        RegisterController(GameDefine.command_AddRedORB, typeof(Com_UpdateRedORB));
+        RegisterController(GameDefine.command_EnAddHP, typeof(Com_EnUpdataHp));
+        RegisterController(GameDefine.command_AddUpdateProps, typeof(Com_UpdateProps));
+        RegisterController(GameDefine.command_UpdateTips, typeof(Com_TipsMessage));
 
     }
     //初始化所有模型数据
@@ -47,6 +50,7 @@ public class InitCtrl : Controller
     {
         GetModel<InforData>().InitInforData();
         GetModel<ShopData>().InitShopData();
+        GetModel<TipsMessageData>().InitTipsMessages();
     }
     private void InitManager(GameObject canvas)
     {

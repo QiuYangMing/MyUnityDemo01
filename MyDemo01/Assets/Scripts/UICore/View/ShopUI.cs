@@ -218,6 +218,12 @@ public class ShopUI : View
             img_BlueORB.gameObject.SetActive(false);
             img_GreenORB.gameObject.SetActive(false);
         }
+
+        if (!Cursor.visible)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
     private void UpdateSellState(Button btn,Toggle tog)
     {
@@ -242,12 +248,24 @@ public class ShopUI : View
                     GetModel<ShopData>().EditorMagic(1);
                     break;
                 case "Btn_Buy2":
-                   GetModel<InforData>().EditorRedORB((GetModel<InforData>().GetRedORB() - redORB));
+                    GetModel<InforData>().EditorRedORB((GetModel<InforData>().GetRedORB() - redORB));
                     GetModel<ShopData>().EditorFireAttack(1);
+                    if (GameData.firstBuyFireAttack)
+                    {
+                        MVC.SendEvent(GameDefine.command_UpdateTips, "BO13");
+                        GameTool.SetInt("firstBuyFireAttack", 0);
+                        GameData.firstBuyFireAttack = false;
+                    }
                     break;
                 case "Btn_Buy3":
                     GetModel<InforData>().EditorRedORB((GetModel<InforData>().GetRedORB() - redORB));
                     GetModel<ShopData>().EditorConterBack(1);
+                    if (GameData.firstBuyConterBack)
+                    {
+                        MVC.SendEvent(GameDefine.command_UpdateTips, "BO16");
+                        GameTool.SetInt("firstBuyConterBack", 0);
+                        GameData.firstBuyConterBack = false;
+                    }
                     break;
                 case "Btn_Buy4":
                     GetModel<InforData>().EditorRedORB((GetModel<InforData>().GetRedORB() - redORB));

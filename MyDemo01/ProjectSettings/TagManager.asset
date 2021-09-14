@@ -8,6 +8,8 @@ TagManager:
   - GM
   - Magic
   - sphereTarp
+  - Props_blue
+  - Props_green
   layers:
   - Default
   - TransparentFX

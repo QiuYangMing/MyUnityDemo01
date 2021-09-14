@@ -132,6 +132,9 @@ public class UIManager : UnitySingleton<UIManager>
         }
         dicShowUI.Add(baseUI.GetUiId, baseUI);
     }
+
+
+
     //对外提供的，隐藏单个窗体的方法
     public void HideSingleUI(E_UiId uiId, Action del = null)
     {

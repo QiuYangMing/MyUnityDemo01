@@ -157,6 +157,16 @@ public class BlackKnightController : MonoBehaviour
     {
         sensor.GetComponent<CapsuleCollider>().enabled = true;
     }
+    private void OnHitEnter()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(transform.position + Vector3.forward * 0.45f, Vector3.back);
+        if (!ei.sm.isconterBack2 && !Physics.Raycast(ray, out hit, 1.5f, 1<<LayerMask.NameToLayer("Ground")))
+        {
+            deltaPos += transform.forward * -0.8f;
+        }
+        
+    }
     private void OnAirHitEnter()
     {
         rigid.useGravity = false;
@@ -196,7 +206,7 @@ public class BlackKnightController : MonoBehaviour
    
     IEnumerator EnmeyDie()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.1f);
         Instantiate(dieModle, transform.position, transform.rotation);
         Destroy(gameObject);
     }

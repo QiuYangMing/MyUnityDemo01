@@ -34,7 +34,9 @@ public enum E_UiId
     WoundedUI,
     ResetGameUI,
     EnemyInforUI,
-    StopUI
+    StopUI,
+    TipsUI,
+    ClearArchivesTipsUI
 }
 //窗体的显示方式
 public enum E_ShowUIMode
@@ -65,6 +67,9 @@ public class GameDefine
     public const string command_AddHP = "Command_AddHp";
     public const string command_EnAddHP = "Command_EnAddHp";
     public const string command_AddRedORB = "Command_AddRedORB";
+    public const string command_AddUpdateProps = "Command_AddUpdateProps";
+    public const string command_UpdateTips = "Command_UpdateTips";
+
 
     //定义消息
     public const string message_UpdatePoint = "Message_UpdatePoint";
@@ -75,6 +80,7 @@ public class GameDefine
     public const string message_UpdateSkill1 = "Message_UpdateSkill1";
     public const string message_UpdateSkill2 = "Message_UpdateSkill2";
     public const string message_UpdateSkill3 = "Message_UpdateSkill3";
+    public const string message_UpdateTips = "Message_UpdateTips";
 
 
 
@@ -91,7 +97,10 @@ public class GameDefine
             { E_UiId.WoundedUI,"UIPrefab/"+"WoundedUI"},
             { E_UiId.ResetGameUI,"UIPrefab/"+"ResetGameUI"},
             { E_UiId.EnemyInforUI,"UIPrefab/"+"EnemyInforUI"},
-            { E_UiId.StopUI,"UIPrefab/"+"StopUI"}
+            { E_UiId.StopUI,"UIPrefab/"+"StopUI"},
+            { E_UiId.TipsUI,"UIPrefab/"+"TipsUI"},
+            { E_UiId.ClearArchivesTipsUI,"UIPrefab/"+"ClearArchivesTipsUI"}
+
 
 
 
@@ -134,6 +143,12 @@ public class GameDefine
                 break;
             case E_UiId.StopUI:
                 scriptType = typeof(StopUI);
+                break;
+            case E_UiId.TipsUI:
+                scriptType = typeof(TipsUI);
+                break;
+            case E_UiId.ClearArchivesTipsUI:
+                scriptType = typeof(ClearArchivesTipsUI);
                 break;
             default:
                 break;

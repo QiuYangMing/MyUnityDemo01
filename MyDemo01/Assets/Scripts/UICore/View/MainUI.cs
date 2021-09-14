@@ -15,6 +15,7 @@ public class MainUI : View
     private Button btn_StartGame;
     private Button btn_ExitGame;
     private Button btn_Aduio;
+    private Button btn_ClearArchive;
     private Button btn_Level1;
     private Button btn_Level2;
     private Button btn_Level3;
@@ -28,6 +29,7 @@ public class MainUI : View
         btn_StartGame = GameTool.GetTheChildComponent<Button>(gameObject, "Btn_StartGame");
         btn_ExitGame = GameTool.GetTheChildComponent<Button>(gameObject, "Btn_ExitGame");
         btn_Aduio = GameTool.GetTheChildComponent<Button>(gameObject, "Btn_Aduio");
+        btn_ClearArchive = GameTool.GetTheChildComponent<Button>(gameObject, "Btn_ClearArchive");
         btn_Level1 = GameTool.GetTheChildComponent<Button>(gameObject, "Btn_Level1");
         btn_Level2 = GameTool.GetTheChildComponent<Button>(gameObject, "Btn_Level2");
         btn_Level3 = GameTool.GetTheChildComponent<Button>(gameObject, "Btn_Level3");
@@ -37,6 +39,7 @@ public class MainUI : View
         btn_Aduio.onClick.AddListener(GotoAudioUI);
         btn_ExitGame.onClick.AddListener(GotoExitUI);
         btn_StartGame.onClick.AddListener(EnterLevel);
+        btn_ClearArchive.onClick.AddListener(ClearArchive);
     }
     protected override void Start()
     {
@@ -68,6 +71,11 @@ public class MainUI : View
         else
         {
             btn_Level3.gameObject.SetActive(false);
+        }
+        if (!Cursor.visible)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
     protected override void OnEnable()
@@ -142,6 +150,17 @@ public class MainUI : View
             UIManager.Instance.ShowUI(E_UiId.InforUI);
             GameTool.SetInt("Leve1Enter", 1);
             GameData.leve1Enter = GameTool.GetInt("Leve1Enter");
+            if (GameData.firstInBaseOperation)
+            {
+                MVC.SendEvent(GameDefine.command_UpdateTips, "BO01");
+                GameTool.SetInt("firstInBaseOperation", 0);
+                GameData.firstInBaseOperation = false;
+            }
         });
+    }
+    private void ClearArchive()
+    {
+        GameTool.DeleteAll();
+        UIManager.Instance.ShowUI(E_UiId.ClearArchivesTipsUI);
     }
 }
